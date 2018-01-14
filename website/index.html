@@ -1,8 +1,47 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>integrated-git-profile</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Integrated Git Profile</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+    <style>
+      body {
+        padding: 350px 50px 20px 50px;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        border: 0;
+        background-color: #EDEDED;
+      }
+
+      input[type="submit"] {
+        padding: 8px;
+        border: 2px #000000 solid;
+        cursor: pointer;
+        font-weight:bold;
+        background-color: #FFFFFF;
+        color: #000000;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #000000;
+        color: #FFFFFF;
+      }
+    </style>
   </head>
   <body>
-    <script src="../../dist/bundle.js"></script>
+    <h1>Integrated Git Profile</h1>
+
+    <input type="text" placeholder="Your GitHub ID" />
+    <input type="text" placeholder="Your GitLab ID" />
+    <input type="submit" value="Generate!" />
+
+    <script src="bundle.js"></script>
   </body>
 </html>
