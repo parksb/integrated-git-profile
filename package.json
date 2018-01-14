@@ -29,10 +29,12 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "json-loader": "^0.5.7",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.1"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "moment": "^2.20.1",
     "request": "^2.83.0"
   }
