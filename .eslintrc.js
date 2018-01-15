@@ -3,6 +3,7 @@ module.exports = {
   rules: {
     'semi': [2, 'always'],
     'no-unused-vars': 'warn',
+    'no-trailing-spaces': ['error', {'skipBlankLines': true, 'ignoreComments': true}],
     'space-before-function-paren': ['error', {'anonymous': 'always', 'named': 'never', 'asyncArrow': 'always'}],
     'camelcase': ['error', { properties: 'never' }],
     'comma-spacing': ['error', { before: false, after: true }],
