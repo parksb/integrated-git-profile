@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const copyWebpackPlugin = require('copy-webpack-plugin');
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/js/main.js',
@@ -9,7 +10,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, './src/website/'),
+    contentBase: path.join(__dirname, './src/app/'),
     compress: true,
     port: 9000
   },
@@ -32,9 +33,10 @@ module.exports = {
   },
   plugins: [
     new copyWebpackPlugin([{
-      from: path.join(__dirname, './src/website/'),
+      from: path.join(__dirname, './src/app/'),
       to: path.join(__dirname, './dist/')
-    }])
+    }]),
+    new uglifyJsPlugin()
   ],
   resolve: {
     modules: ['node_modules'],
