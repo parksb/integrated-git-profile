@@ -1,0 +1,24 @@
+body {
+  padding: 350px 50px 20px 50px;
+  text-align: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 0;
+  background-color: #EDEDED;
+}
+
+input[type="submit"] {
+  padding: 8px;
+  border: 2px #000000 solid;
+  cursor: pointer;
+  font-weight:bold;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+input[type="submit"]:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
