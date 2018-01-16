@@ -1,8 +1,17 @@
 # integrated-git-profile
 View the profile of github and gitlab on one page.
 
-## Run locally
+**Run locally**
 ```bash
-git clone https://github.com/ParkSB/integrated-git-profile.git
 npm run server
+```
+
+**Build**
+```bash
+npm run build
+```
+
+**Watch**
+```bash
+npm run watch
 ```
