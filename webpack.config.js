@@ -12,7 +12,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, './dist/'),
-    compress: false,
+    compress: true,
     port: 9000
   },
   module: {
@@ -37,7 +37,6 @@ module.exports = {
       from: path.join(__dirname, './src/app/'),
       to: path.join(__dirname, './dist/')
     }]),
-    new UglifyJsPlugin(),
     new HardSourceWebpackPlugin()
   ],
   resolve: {

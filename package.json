@@ -5,7 +5,7 @@
   "main": "./src/js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress -p",
+    "build": "webpack --progress -p --optimize-minimize",
     "watch": "webpack --progress --watch",
     "server": "webpack-dev-server --open"
   },
