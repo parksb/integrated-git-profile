@@ -1,19 +1,12 @@
 import $ from 'jquery';
-import uri from 'urijs';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import GithubScraper from './app/githubScraper';
-// import GitlabScraper from './app/gitlabScraper';
+import Renderer from './components/Renderer';
 
-// Get GitHub ID and GitLab ID from the uri.
-const uriData = uri().query(true);
-const githubId = uriData['github'];
-// const gitlabId = uriData['gitlab'];
+const rootElement = $('#root')[0];
 
-let ghData = new GithubScraper(githubId);
-// const glData = new GitlabScraper(gitlabId);
-
-ghData.getProfile((user) => {
-  console.log(user.name);
-  console.log(user.bio);
-  console.log(user.avatar);
-});
+ReactDOM.render(
+  <Renderer />,
+  rootElement
+);

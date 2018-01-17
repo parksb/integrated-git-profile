@@ -23,8 +23,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
+            presets: ['env', 'react']
+          },
         }
       }, {
         test: /\.json$/,
@@ -41,7 +41,7 @@ module.exports = {
   ],
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.webpack.js', '.web.js', '.js', '.json','jsx', 'css']
+    extensions: ['.webpack.js', '.web.js', '.js', '.json', 'jsx', 'css']
   },
   node: {
     console: false,

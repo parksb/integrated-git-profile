@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export default class GithubScraper {
+class GithubScraper {
   constructor(id) {
     this._id = id;
   }
@@ -36,3 +36,5 @@ export default class GithubScraper {
 
   }
 }
+
+export default GithubScraper;
