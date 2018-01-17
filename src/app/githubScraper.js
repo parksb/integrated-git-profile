@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import request from 'request';
 
 export default class GithubScraper {
   constructor(id) {

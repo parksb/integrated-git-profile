@@ -5,7 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 module.exports = {
-  entry: './src/js/main.js',
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist/'),
     filename: 'bundle.js'
@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([{
-      from: path.join(__dirname, './src/app/'),
+      from: path.join(__dirname, './public/'),
       to: path.join(__dirname, './dist/')
     }]),
     new HardSourceWebpackPlugin()

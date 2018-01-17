@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import uri from 'urijs';
 
-import GithubScraper from './githubScraper';
-// import GitlabScraper from './gitlabScraper';
+import GithubScraper from './app/githubScraper';
+// import GitlabScraper from './app/gitlabScraper';
 
 // Get GitHub ID and GitLab ID from the uri.
 const uriData = uri().query(true);
