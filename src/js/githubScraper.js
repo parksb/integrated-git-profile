@@ -6,41 +6,34 @@ export default class GithubScraper {
     this._id = id;
   }
 
-  getProfile() {
-    const login = this._id;
-    const url = `https://api.github.com/users/${login}`;
+  // Get the user's profile.
+  getProfile(fn) {
+    const id = this._id;
+    const url = `https://api.github.com/users/${id}`;
 
     let userProfile = {
       name: '',
       avatar: '',
-      bio: '',
-      blog: ''
+      bio: ''
     };
 
-    request(url, (error, response, data) => {
-      if (!error) {
-        data = JSON.parse(data);
-
-        userProfile.name = data.name;
-        userProfile.avatar = data.avatar;
-        userProfile.bio = data.bio;
-        userProfile.blog = data.blog;
-
-        return userProfile;
-      } else {
-        console.log(`[Error] ${error}`);
-        return false;
-      }
+    $.getJSON(url, (data) => {
+      userProfile.name = data.name;
+      userProfile.avatar = data.avatar_url;
+      userProfile.bio = data.bio;
+      
+      fn(userProfile);
     });
   }
 
+  // Get the user's repositories.
   getRepository() {
-    // TODO: Get the user's repositories.
-    const login = this._id;
-    const url = `https://api.github.com/users/${login}/repos`;
+    const id = this._id;
+    const url = `https://api.github.com/users/${id}/repos`;
   }
 
+  // Get the history of user's contributing activities.
   getContribution() {
-    // TODO: Get the history of user's contributing activities.
+
   }
 }

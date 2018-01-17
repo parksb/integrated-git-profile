@@ -2,14 +2,18 @@ import $ from 'jquery';
 import uri from 'urijs';
 
 import GithubScraper from './githubScraper';
-import GitlabScraper from './gitlabScraper';
+// import GitlabScraper from './gitlabScraper';
 
 // Get GitHub ID and GitLab ID from the uri.
 const uriData = uri().query(true);
 const githubId = uriData['github'];
-const gitlabId = uriData['gitlab'];
+// const gitlabId = uriData['gitlab'];
 
-const ghData = new GithubScraper(githubId);
-const glData = new GitlabScraper(gitlabId);
+let ghData = new GithubScraper(githubId);
+// const glData = new GitlabScraper(gitlabId);
 
-ghData.getProfile();
+ghData.getProfile((user) => {
+  console.log(user.name);
+  console.log(user.bio);
+  console.log(user.avatar);
+});
