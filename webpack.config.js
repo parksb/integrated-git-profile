@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const copyWebpackPlugin = require('copy-webpack-plugin');
-const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 module.exports = {
   entry: './src/js/main.js',
@@ -10,8 +11,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, './src/app/'),
-    compress: true,
+    contentBase: path.join(__dirname, './dist/'),
+    compress: false,
     port: 9000
   },
   module: {
@@ -32,11 +33,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new copyWebpackPlugin([{
+    new CopyWebpackPlugin([{
       from: path.join(__dirname, './src/app/'),
       to: path.join(__dirname, './dist/')
     }]),
-    new uglifyJsPlugin()
+    new UglifyJsPlugin(),
+    new HardSourceWebpackPlugin()
   ],
   resolve: {
     modules: ['node_modules'],
