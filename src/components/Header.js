@@ -4,26 +4,23 @@ import GithubScraper from '../app/githubScraper';
 import GitlabScraper from '../app/gitlabScraper';
 
 class Header extends React.Component {
-  getUserData(fn) {
-    // Get GitHub ID and GitLab ID from the uri.
+  render() {
     const uriData = uri().query(true);
     const githubId = uriData['github'];
-    // const gitlabId = uriData['gitlab'];
 
-    let ghData = new GithubScraper(githubId);
-    // const glData = new GitlabScraper(gitlabId);
+    let user = new GithubScraper(githubId);
+    let userProfile = user.getProfile();
 
-    ghData.getProfile(user => {
-      console.log(user.name);
-    });
-  }
-
-  render() {
-    const userName = this.getUserData();
-    console.log(userName);
+    let coverPic = 'https://i.ytimg.com/vi/AZ_1bSwkCnM/maxresdefault.jpg';
+    let profilePic = userProfile.avatar;
 
     return (
-      <h1>Header {userName}</h1>
+      <div id="header">
+        <div id="background">
+          <h1>{userProfile.name}</h1>
+        </div>
+        <div id="profile-pic" style={{backgroundImage: `url(${profilePic})`}}></div>
+      </div>
     );
   }
 }

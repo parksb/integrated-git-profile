@@ -6,9 +6,15 @@ class GithubScraper {
   }
 
   // Get the user's profile.
-  getProfile(fn) {
+  getProfile() {
     const id = this._id;
     const url = `https://api.github.com/users/${id}`;
+
+    const data = JSON.parse($.ajax({
+      url: url,
+      dataType: 'JSON',
+      async: false
+    }).responseText);
 
     let userProfile = {
       name: '',
@@ -16,13 +22,11 @@ class GithubScraper {
       bio: ''
     };
 
-    $.getJSON(url, (data) => {
-      userProfile.name = data.name;
-      userProfile.avatar = data.avatar_url;
-      userProfile.bio = data.bio;
-      
-      fn(userProfile);
-    });
+    userProfile.name = data.name;
+    userProfile.avatar = data.avatar_url;
+    userProfile.bio = data.bio;
+
+    return userProfile;
   }
 
   // Get the user's repositories.
