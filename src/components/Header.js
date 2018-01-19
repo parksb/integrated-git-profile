@@ -11,15 +11,13 @@ class Header extends React.Component {
     let user = new GithubScraper(githubId);
     let userProfile = user.getProfile();
 
-    let coverPic = 'https://i.ytimg.com/vi/AZ_1bSwkCnM/maxresdefault.jpg';
-    let profilePic = userProfile.avatar;
-
     return (
       <div id="header">
         <div id="background">
           <h1>{userProfile.name}</h1>
+          <h2>{userProfile.bio}</h2>
         </div>
-        <div id="profile-pic" style={{backgroundImage: `url(${profilePic})`}}></div>
+        <div id="profile-pic" style={{backgroundImage: `url(${userProfile.avatar})`}}></div>
       </div>
     );
   }

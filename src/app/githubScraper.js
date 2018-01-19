@@ -5,16 +5,21 @@ class GithubScraper {
     this._id = id;
   }
 
-  // Get the user's profile.
-  getProfile() {
-    const id = this._id;
-    const url = `https://api.github.com/users/${id}`;
-
+  getJsonData(url) {
     const data = JSON.parse($.ajax({
       url: url,
       dataType: 'JSON',
       async: false
     }).responseText);
+
+    return data;
+  }
+
+  // Get the user's profile.
+  getProfile() {
+    const id = this._id;
+    const url = `https://api.github.com/users/${id}`;
+    const data = this.getJsonData(url);
 
     let userProfile = {
       name: '',
@@ -33,11 +38,26 @@ class GithubScraper {
   getRepository() {
     const id = this._id;
     const url = `https://api.github.com/users/${id}/repos`;
+    const data = this.getJsonData(url);
+
+    let userRepository = [];
+
+    console.log(data[0]);
+
+    for (let i in data) {
+      userRepository[i] = {};
+
+      userRepository[i].name = data[i].name;
+      userRepository[i].description = data[i].description;
+      userRepository[i].date = data[i].created_at;
+    }
+
+    return userRepository;
   }
 
-  // Get the history of user's contributing activities.
-  getContribution() {
-
+  changeDocTitle() {
+    const userName = this.getProfile().name;
+    document.title = `${userName}'s Git profile`;
   }
 }
 
