@@ -1,5 +1,5 @@
 # integrated-git-profile
-View the profile of github and gitlab on one page.
+Find the profile of github and gitlab on one page.
 
 **Run locally**
 ```bash
