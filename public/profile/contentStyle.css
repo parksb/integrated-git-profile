@@ -1,21 +1,43 @@
+html {
+  padding-bottom: 50px;
+}
+
 #content {
 	max-width: 900px;
   min-width: 200px;
 	margin: auto;
-	margin-top: 50px;
+	margin-top: 30px;
+}
+
+.repo-body {
+  width: 48%;
+  height: 130px; 
+  padding: 15px 1%;
+  float: left;
 }
 
 .repo-card {
-  width: 400px;
-	max-width: 400px;
-  min-width: 50px;
-  height: 100px;
+  width: 90%;
+  height: 90%;
 	padding: 10px 20px;
-	margin-bottom: 25px;
 	background-color: white;
   box-shadow: 0 2px 5px #989898;
-  margin-left: 10px;
-  float: left;
+}
+
+.repo-from {
+  font-size: 0.6em;
+  color: #FFFFFF;
+  padding: 0 5px;  
+  font-weight: normal;
+  margin-right: 5px;
+}
+
+.repo-from-GitHub {
+  background-color:#000000;
+}
+
+.repo-from-GitLab {
+  background-color: #FC6D26;
 }
 
 .repo-name {
@@ -26,5 +48,6 @@
 .repo-description {
 	font-size: 1.0em;
 	color: #808080;
-	font-weight: normal;
+  font-weight: normal;
+  line-height: 160%;
 }

@@ -15,7 +15,6 @@ class GithubScraper {
     return data;
   }
 
-  // Get the user's profile.
   getProfile() {
     const id = this._id;
     const url = `https://api.github.com/users/${id}`;
@@ -34,7 +33,6 @@ class GithubScraper {
     return userProfile;
   }
 
-  // Get the user's repositories.
   getRepository() {
     const id = this._id;
     const url = `https://api.github.com/users/${id}/repos`;
@@ -42,14 +40,19 @@ class GithubScraper {
 
     let userRepository = [];
 
-    console.log(data[0]);
-
     for (let i in data) {
-      userRepository[i] = {};
+      userRepository[i] = {
+        from: '',
+        name: '',
+        description: '',
+        date: ''
+      };
 
+      userRepository[i].from = 'GitHub';
       userRepository[i].name = data[i].name;
       userRepository[i].description = data[i].description;
       userRepository[i].date = data[i].created_at;
+      userRepository[i].url = `https://github.com/${this._id}/${data[i].name}`;
     }
 
     return userRepository;

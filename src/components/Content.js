@@ -8,9 +8,16 @@ class Content extends React.Component {
   constructor(props) {
     const uriData = uri().query(true);
     const githubId = uriData['github'];
+    const gitlabId = uriData['gitlab'];
 
-    let user = new GithubScraper(githubId);
-    let userRepository = user.getRepository();
+    let user = {};
+    let userRepository = [];
+
+    user = new GithubScraper(githubId);
+    userRepository = user.getRepository();
+
+    user = new GitlabScraper(gitlabId);
+    userRepository = userRepository.concat(user.getRepository());
 
     super(props);
     this.state = {
@@ -23,9 +30,12 @@ class Content extends React.Component {
       <div id="content">
         {this.state.userRepository.map((repo, i) => {
           return (<Repositories
+            from = {repo.from}
             name = {repo.name}
             description = {repo.description}
-            key = {i}/>);
+            url = {repo.url}
+            key = {i}
+          />);
         })}
       </div>
     );
