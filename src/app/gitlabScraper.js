@@ -17,10 +17,10 @@ class GitlabScraper {
   }
 
   getGitlabUserId() {
-    let url = `https://gitlab.com/api/v4/users?username=${this._id}`;
-    let data = this.getJsonData(url);
+    const url = `https://gitlab.com/api/v4/users?username=${this._id}`;
+    const data = this.getJsonData(url);
 
-    return data.id;
+    return data[0].id;
   }
 
   getProfile() {
@@ -43,7 +43,7 @@ class GitlabScraper {
 
   getRepository() {
     const id = this.getGitlabUserId();
-    const url = `https://gitlab.com/api/v4/users/273457/projects`;
+    const url = `https://gitlab.com/api/v4/users/${id}/projects`;
     const data = this.getJsonData(url);
 
     let userRepository = [];

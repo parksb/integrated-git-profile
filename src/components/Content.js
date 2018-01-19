@@ -19,6 +19,16 @@ class Content extends React.Component {
     user = new GitlabScraper(gitlabId);
     userRepository = userRepository.concat(user.getRepository());
 
+    userRepository.sort((a, b) => {
+      if (a.date < b.date) {
+        return 1;
+      } else if (a.date > b.date) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+
     super(props);
     this.state = {
       userRepository
