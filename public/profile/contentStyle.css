@@ -1,0 +1,26 @@
+#content {
+	max-width: 900px;
+  min-width: 200px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.repo-card {
+	max-width: 400px;
+	min-width: 50px;
+	padding: 10px 20px;
+	margin-bottom: 25px;
+	background-color: white;
+	box-shadow: 0 2px 5px #989898;
+}
+
+.repo-name {
+	font-size: 1.1em;
+	color: #304D5B;
+}
+
+.repo-description {
+	font-size: 1.0em;
+	color: #808080;
+	font-weight: normal;
+}
