@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import request from 'request';
 
 class GitlabScraper {
   constructor(id) {
@@ -59,7 +58,7 @@ class GitlabScraper {
       userRepository[i].from = 'GitLab';
       userRepository[i].name = data[i].name;
       userRepository[i].description = data[i].description;
-      userRepository[i].date = data[i].created_at;
+      userRepository[i].date = data[i].last_activity_at;
       userRepository[i].url = `https://gitlab.com/${this._id}/${data[i].name}`;
     }
 

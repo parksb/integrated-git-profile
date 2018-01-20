@@ -16,8 +16,7 @@ class GithubScraper {
   }
 
   getProfile() {
-    const id = this._id;
-    const url = `https://api.github.com/users/${id}`;
+    const url = `https://api.github.com/users/${this._id}`;
     const data = this.getJsonData(url);
 
     let userProfile = {
@@ -34,8 +33,7 @@ class GithubScraper {
   }
 
   getRepository() {
-    const id = this._id;
-    const url = `https://api.github.com/users/${id}/repos`;
+    const url = `https://api.github.com/users/${this._id}/repos`;
     const data = this.getJsonData(url);
 
     let userRepository = [];
@@ -51,7 +49,7 @@ class GithubScraper {
       userRepository[i].from = 'GitHub';
       userRepository[i].name = data[i].name;
       userRepository[i].description = data[i].description;
-      userRepository[i].date = data[i].created_at;
+      userRepository[i].date = data[i].updated_at;
       userRepository[i].url = `https://github.com/${this._id}/${data[i].name}`;
     }
 
