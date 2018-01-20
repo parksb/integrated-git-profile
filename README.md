@@ -1,17 +1,30 @@
 # integrated-git-profile
 Find the profile of github and gitlab on one page.
 
-**Run locally**
+![preview](https://i.imgur.com/0sBFBzV.png)
+
+**1. Clone the repository**
 ```bash
-npm run server
+git clone https://github.com/ParkSB/integrated-git-profile.git
+cd integrated-git-profile
 ```
 
-**Build**
+**2. Install dependencies**
+```bash
+npm install
+```
+
+**3. Build**
 ```bash
 npm run build
 ```
 
-**Watch**
+**4. Run watcher**
 ```bash
 npm run watch
+```
+
+**5. Run local server**
+```bash
+npm run server
 ```
