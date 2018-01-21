@@ -49,7 +49,7 @@ class GithubScraper {
       userRepository[i].from = 'GitHub';
       userRepository[i].name = data[i].name;
       userRepository[i].description = data[i].description;
-      userRepository[i].date = data[i].updated_at;
+      userRepository[i].date = data[i].pushed_at;
       userRepository[i].url = `https://github.com/${this._id}/${data[i].name}`;
     }
 
