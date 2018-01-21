@@ -1,5 +1,7 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.css);
+
 body {
-  padding: 350px 50px 20px 50px;
+  padding: 330px 50px 20px 50px;
   text-align: center;
 }
 
@@ -21,4 +23,41 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #000000;
   color: #FFFFFF;
+}
+
+input[type=radio] {
+  display:none;
+}
+
+.main-profile-rad {
+  font-family: 'FontAwesome';
+  cursor: pointer;
+  padding: 5px;
+}
+
+.main-profile-rad:before {
+  display:inline-block;
+  font-size:2.5em;
+  color: #CFCFCF;
+}
+
+input[type=radio]:checked + .main-profile-rad:before {
+  display:inline-block;
+  color:#66B34E;
+}
+
+#main-profile-gh, #main-profile-gh:before {
+  content: "\f09b";
+}
+
+#main-profile-gl, #main-profile-gl:before {
+  content: "\f296";
+}
+
+#main-profile-git {
+  margin-top: 20px;
+}
+
+#main-profile-git span {
+  color: #AFAFAF;
 }

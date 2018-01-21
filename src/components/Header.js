@@ -6,12 +6,21 @@ import GitlabScraper from '../app/gitlabScraper';
 class Header extends React.Component {
   render() {
     const uriData = uri().query(true);
-    const githubId = uriData['github'];
-    const gitlabId = uriData['gitlab'];
+    const githubId = uriData['gh'];
+    const gitlabId = uriData['gl'];
+    const mainGit = uriData['m'];
+
+    let user = {};
+    let userProfile = {};
 
     // Get GitHub profile
-    let user = new GithubScraper(githubId);
-    let userProfile = user.getProfile();
+    if (mainGit === 'gh') {
+      user = new GithubScraper(githubId);
+      userProfile = user.getProfile();
+    } else {
+      user = new GitlabScraper(githubId);
+      userProfile = user.getProfile();
+    }
 
     return (
       <div id="header">

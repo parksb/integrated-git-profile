@@ -7,8 +7,8 @@ import Repositories from './Repositories';
 class Content extends React.Component {
   constructor(props) {
     const uriData = uri().query(true);
-    const githubId = uriData['github'];
-    const gitlabId = uriData['gitlab'];
+    const githubId = uriData['gh'];
+    const gitlabId = uriData['gl'];
 
     let user = {};
     let userRepository = [];

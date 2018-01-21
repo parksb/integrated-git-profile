@@ -65,7 +65,7 @@ class GitlabScraper {
     return userRepository;
   }
 
-  changeDocTitle() {
+  setDocTitle() {
     const userName = this.getProfile().name;
     document.title = `${userName}'s Git profile`;
   }
