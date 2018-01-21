@@ -9,9 +9,10 @@ a {
 
 #background {
 	width: 100%;
-  height: 100%;
+  height: 200px;
 	background-color: #506D7B;
 	box-shadow: 0 2px 5px 0 #999999;
+	padding: 50px 0 50px 0;
 }
 
 #profile-pic {
@@ -21,7 +22,6 @@ a {
 	border-radius: 60px;
 	background-size: cover;
 	background-position: 50%;
-	margin-top: -240px;
 	box-shadow: 0 2px 5px 0 #000000;
 }
 
@@ -34,11 +34,32 @@ a {
 }
 
 #background h1 {
-	padding-top: 180px;
+	margin-top: 10px;
 	font-size: 1.5em;
 }
 
 #background h2 {
-	padding-top: 10px;
+	margin-top: 5px;
 	font-size: 1.0em;
+}
+
+#profile-info {
+	width: 100%;
+	margin: auto;	
+	font-size: 20px;
+}
+
+#info-git {
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	margin-top: 10px;
+}
+
+#info-git a {
+	color: #FFFFFF;
+}
+
+#info-git svg {
+	margin: 5px 5px 0 5px;
 }

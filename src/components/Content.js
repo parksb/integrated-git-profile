@@ -13,12 +13,15 @@ class Content extends React.Component {
     let user = {};
     let userRepository = [];
 
+    // Get GitHub repo
     user = new GithubScraper(githubId);
     userRepository = user.getRepository();
 
+    // Get GitLab repo
     user = new GitlabScraper(gitlabId);
     userRepository = userRepository.concat(user.getRepository());
 
+    // Sort by last activity date
     userRepository.sort((a, b) => {
       if (a.date < b.date) {
         return 1;
