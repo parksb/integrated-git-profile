@@ -7,7 +7,6 @@ import GithubScraper from './app/githubScraper';
 import GitlabScraper from './app/gitlabScraper';
 
 const rootElement = $('#root')[0];
-
 const uriData = uri().query(true);
 const githubId = uriData['gh'];
 const gitlabId = uriData['gl'];
@@ -20,7 +19,7 @@ if (mainGit === 'gh') {
   user = new GithubScraper(githubId);
   user.setDocTitle();
 } else {
-  user = new GithubScraper(gitlabId);
+  user = new GitlabScraper(gitlabId);
   user.setDocTitle();
 }
 
