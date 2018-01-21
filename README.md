@@ -1,8 +1,11 @@
 # integrated-git-profile
-Find the profile of github and gitlab on one page.
+This is webapp project for GitHub and GitLab users to check out all repositories of GitHub and GitLab in one page.
+
+## Live at: [Here](https://parksb.github.io/integrated-git-profile/)
 
 ![preview](https://i.imgur.com/0sBFBzV.png)
 
+## Developement
 **1. Clone the repository**
 ```bash
 git clone https://github.com/ParkSB/integrated-git-profile.git
