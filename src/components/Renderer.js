@@ -5,7 +5,7 @@ import Content from './Content';
 class Renderer extends React.Component {
   render() {
     return (
-      <div>
+      <div id="wrapper">
         <Header />
         <Content />
       </div>

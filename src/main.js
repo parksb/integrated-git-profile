@@ -2,9 +2,11 @@ import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import uri from 'urijs';
+import { bb } from 'billboard.js';
 import Renderer from './components/Renderer';
 import GithubScraper from './app/githubScraper';
 import GitlabScraper from './app/gitlabScraper';
+import ActivityGraph from './app/activityGraph';
 
 const rootElement = $('#root')[0];
 const uriData = uri().query(true);
@@ -27,3 +29,6 @@ ReactDOM.render(
   <Renderer />,
   rootElement
 );
+
+const graph = new ActivityGraph();
+graph.drawGraph();
