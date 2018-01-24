@@ -51,3 +51,7 @@ html {
   font-weight: normal;
   line-height: 160%;
 }
+
+#activity-graph {
+  margin-bottom: 30px;
+}

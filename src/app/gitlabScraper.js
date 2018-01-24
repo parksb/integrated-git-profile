@@ -1,73 +1,91 @@
 import $ from 'jquery';
+import moment from 'moment';
+import Common from './common';
 
 class GitlabScraper {
   constructor(id) {
     this._id = id;
-  }
-  
-  getJsonData(url) {
-    const data = JSON.parse($.ajax({
-      url: url,
-      dataType: 'JSON',
-      async: false
-    }).responseText);
-
-    return data;
+    this._cm = new Common();
   }
 
   getGitlabUserId() {
-    const url = `https://gitlab.com/api/v4/users?username=${this._id}`;
-    const data = this.getJsonData(url);
+    const URL = `https://gitlab.com/api/v4/users?username=${this._id}`;
+    const DATA = this._cm.getJsonData(URL);
 
-    return data[0].id;
+    return DATA[0].id;
   }
 
   getProfile() {
-    const id = this.getGitlabUserId();
-    const url = `https://gitlab.com/api/v4/users/${id}`;
-    const data = this.getJsonData(url);
+    const ID = this.getGitlabUserId();
+    const URL = `https://gitlab.com/api/v4/users/${ID}`;
+    const DATA = this._cm.getJsonData(URL);
 
     let userProfile = {
-      name: '',
-      avatar: '',
-      bio: ''
+      name: DATA.name,
+      avatar: DATA.avatar_url,
+      bio: DATA.bio
     };
-
-    userProfile.name = data.name;
-    userProfile.avatar = data.avatar_url;
-    userProfile.bio = data.bio;
 
     return userProfile;
   }
 
   getRepository() {
-    const id = this.getGitlabUserId();
-    const url = `https://gitlab.com/api/v4/users/${id}/projects`;
-    const data = this.getJsonData(url);
+    const ID = this.getGitlabUserId();
+    const URL = `https://gitlab.com/api/v4/users/${ID}/projects`;
+    const DATA = this._cm.getJsonData(URL);
 
     let userRepository = [];
 
-    for (let i in data) {
-      userRepository[i] = {
-        from: '',
-        name: '',
-        description: '',
-        date: ''
-      };
-
-      userRepository[i].from = 'GitLab';
-      userRepository[i].name = data[i].name;
-      userRepository[i].description = data[i].description;
-      userRepository[i].date = data[i].last_activity_at;
-      userRepository[i].url = `https://gitlab.com/${this._id}/${data[i].name}`;
+    for (let i in DATA) {
+      userRepository.push({
+        from: 'GitLab',
+        name: DATA[i].name,
+        description: DATA[i].description,
+        date: DATA[i].last_activity_at,
+        url: `https://gitlab.com/${this._id}/${DATA[i].name}`
+      });
     }
 
     return userRepository;
   }
 
-  setDocTitle() {
-    const userName = this.getProfile().name;
-    document.title = `${userName}'s Git profile`;
+  getActivity() {
+    const ID = this.getGitlabUserId();
+    const URL = `https://gitlab.com/api/v4/users/${ID}/events`;
+    const DATE_ARR = this._cm.setDateArray();
+
+    let data = this._cm.getJsonData(URL);
+    let userActDate = [];
+    let userAct = ['GitLab'];
+
+    data = this._cm.sortObjectByOrder(data, 'created_at', 'asc');
+    
+    for (let i = 0; i < data.length; i += 1) {
+      let date = moment(data[i].created_at).format('YYYY-MM-DD');
+      
+      if (date >= DATE_ARR[1]) {
+        userActDate.push(date);
+      }
+    }
+
+    for (let i = 1, j = 0; i < DATE_ARR.length; i += 1) {
+      let actNum = 0;
+
+      if (userActDate[j] === DATE_ARR[i]) {
+        for (let k = j; k < userActDate.length; k += 1) {
+          if (userActDate[j] === userActDate[k]) {
+            actNum += 1;
+          } else {
+            j = k;
+            break;
+          }
+        }
+      }
+
+      userAct.push(actNum);
+    }
+
+    return userAct;
   }
 }
 

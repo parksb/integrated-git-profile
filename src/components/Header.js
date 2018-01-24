@@ -5,20 +5,20 @@ import GitlabScraper from '../app/gitlabScraper';
 
 class Header extends React.Component {
   render() {
-    const uriData = uri().query(true);
-    const githubId = uriData['gh'];
-    const gitlabId = uriData['gl'];
-    const mainGit = uriData['m'];
+    const URI_DATA = uri().query(true);
+    const GH_ID = URI_DATA['gh'];
+    const GL_ID = URI_DATA['gl'];
+    const MAIN_GIT = URI_DATA['m'];
 
     let user = {};
     let userProfile = {};
 
     // Get GitHub profile
-    if (mainGit === 'gh') {
-      user = new GithubScraper(githubId);
+    if (MAIN_GIT === 'gh') {
+      user = new GithubScraper(GH_ID);
       userProfile = user.getProfile();
     } else {
-      user = new GitlabScraper(githubId);
+      user = new GitlabScraper(GH_ID);
       userProfile = user.getProfile();
     }
 
@@ -34,8 +34,8 @@ class Header extends React.Component {
           })()}</h2>
           <div id="profile-info">
             <div id="info-git">
-              <a href={`https://github.com/${githubId}`} target="_blank"><i className="fab fa-github"></i></a>
-              <a href={`https://gitlab.com/${gitlabId}`} target="_blank"><i className="fab fa-gitlab"></i></a>
+              <a href={`https://github.com/${GH_ID}`} target="_blank"><i className="fab fa-github"></i></a>
+              <a href={`https://gitlab.com/${GL_ID}`} target="_blank"><i className="fab fa-gitlab"></i></a>
             </div>
           </div>
         </div>

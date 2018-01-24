@@ -1,24 +1,16 @@
 import $ from 'jquery';
 import moment from 'moment';
+import Common from './common';
 
 class GithubScraper {
   constructor(id) {
     this._id = id;
-  }
-
-  getJsonData(url) {
-    const DATA = JSON.parse($.ajax({
-      url: url,
-      dataType: 'JSON',
-      async: false
-    }).responseText);
-
-    return DATA;
+    this._cm = new Common();
   }
 
   getProfile() {
     const URL = `https://api.github.com/users/${this._id}`;
-    const DATA = this.getJsonData(URL);
+    const DATA = this._cm.getJsonData(URL);
 
     let userProfile = {
       name: '',
@@ -35,7 +27,7 @@ class GithubScraper {
 
   getRepository() {
     const URL = `https://api.github.com/users/${this._id}/repos`;
-    const DATA = this.getJsonData(URL);
+    const DATA = this._cm.getJsonData(URL);
 
     let userRepository = [];
 
@@ -54,28 +46,21 @@ class GithubScraper {
 
   getActivity() {
     const URL = `https://api.github.com/users/${this._id}/events`;
-    const DATA = this.getJsonData(URL);
-    const DATE_ARR = this.setDateArray();
+    const DATE_ARR = this._cm.setDateArray();
 
+    let data = this._cm.getJsonData(URL);
     let userActDate = [];
     let userAct = ['GitHub'];
 
-    for (let i = 0; i < DATA.length; i += 1) {
-      if (DATA.type !== 'ForkEvent' && DATA.type !== 'WatchEvent') {
-        userActDate.push(moment(DATA[i].created_at).format('YYYY-MM-DD'));
+    data = this._cm.sortObjectByOrder(data, 'created_at', 'asc');
+    
+    for (let i = 0; i < data.length; i += 1) {
+      let date = moment(data[i].created_at).format('YYYY-MM-DD');
+      
+      if (date >= DATE_ARR[1]) {
+        userActDate.push(date);
       }
     }
-
-    // Sort by date
-    userActDate.sort((a, b) => {
-      if (a > b) {
-        return 1;
-      } else if (a < b) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
 
     for (let i = 1, j = 0; i < DATE_ARR.length; i += 1) {
       let actNum = 0;
@@ -94,23 +79,7 @@ class GithubScraper {
       userAct.push(actNum);
     }
 
-    return [DATE_ARR, userAct];
-  }
-
-  setDateArray() {
-    const dayRange = 30;
-    let date = ['x'];
-    
-    for (let i = dayRange; i >= 0; i--) {
-      date.push(moment().add(-i, 'days').format('YYYY-MM-DD'));
-    }
-
-    return date;
-  }
-
-  setDocTitle() {
-    const userName = this.getProfile().name;
-    document.title = `${userName}'s Git profile`;
+    return userAct;
   }
 }
 

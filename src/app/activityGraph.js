@@ -2,23 +2,31 @@ import $ from 'jquery';
 import uri from 'urijs';
 import { bb } from 'billboard.js';
 import GithubScraper from './githubScraper';
+import GitlabScraper from './gitlabScraper';
+import Common from './common';
 
 class ActivityGraph {
   drawGraph() {
-    const uriData = uri().query(true);
-    const githubId = uriData['gh'];
-    const gitlabId = uriData['gl'];
+    const URI_DATA = uri().query(true);
+    const GH_ID = URI_DATA['gh'];
+    const GL_ID = URI_DATA['gl'];
 
-    const gh = new GithubScraper(githubId);
-    const ghActDate = gh.getActivity();
+    const GH = new GithubScraper(GH_ID);
+    const GH_ACT_DATE = GH.getActivity();
 
-    var graph = bb.generate({
+    const GL = new GitlabScraper(GL_ID);
+    const GL_ACT_DATE = GL.getActivity();
+
+    const CM = new Common();
+
+    bb.generate({
       bindto: '#activity-graph',
       data: {
         x: 'x',
         columns: [
-          ghActDate[0],
-          ghActDate[1]
+          CM.setDateArray(),
+          GH_ACT_DATE,
+          GL_ACT_DATE
         ]
       },
       axis: {
@@ -34,7 +42,8 @@ class ActivityGraph {
       },
       color: {
         pattern: [
-          '#000000'
+          '#000000',
+          '#FC6D26'
         ]
       }
     });

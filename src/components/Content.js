@@ -1,36 +1,29 @@
 import React from 'react';
 import uri from 'urijs';
+import Common from '../app/common';
 import GithubScraper from '../app/githubScraper';
 import GitlabScraper from '../app/gitlabScraper';
 import Repositories from './Repositories';
 
 class Content extends React.Component {
   constructor(props) {
-    const uriData = uri().query(true);
-    const githubId = uriData['gh'];
-    const gitlabId = uriData['gl'];
+    const URI_DATA = uri().query(true);
+    const GH_ID = URI_DATA['gh'];
+    const GL_ID = URI_DATA['gl'];
+    const CM = new Common();
 
     let user = {};
     let userRepository = [];
 
     // Get GitHub repo
-    user = new GithubScraper(githubId);
+    user = new GithubScraper(GH_ID);
     userRepository = user.getRepository();
 
     // Get GitLab repo
-    user = new GitlabScraper(gitlabId);
+    user = new GitlabScraper(GL_ID);
     userRepository = userRepository.concat(user.getRepository());
 
-    // Sort by last activity date
-    userRepository.sort((a, b) => {
-      if (a.date < b.date) {
-        return 1;
-      } else if (a.date > b.date) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+    userRepository = CM.sortObjectByOrder(userRepository, 'date', 'desc');
 
     super(props);
     this.state = {
