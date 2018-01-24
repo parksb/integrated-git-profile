@@ -11,22 +11,23 @@ class ActivityGraph {
     const GH_ID = URI_DATA['gh'];
     const GL_ID = URI_DATA['gl'];
 
+    const CM = new Common();
+
     const GH = new GithubScraper(GH_ID);
     const GH_ACT_DATE = GH.getActivity();
 
     const GL = new GitlabScraper(GL_ID);
     const GL_ACT_DATE = GL.getActivity();
 
-    const CM = new Common();
-
+    // Set activity graph.
     bb.generate({
       bindto: '#activity-graph',
       data: {
         x: 'x',
         columns: [
-          CM.setDateArray(),
-          GH_ACT_DATE,
-          GL_ACT_DATE
+          CM.setDateArray(), // Last 60 days date.
+          GH_ACT_DATE, // GitHub activities.
+          GL_ACT_DATE // GitLab activities.
         ]
       },
       axis: {
@@ -42,8 +43,8 @@ class ActivityGraph {
       },
       color: {
         pattern: [
-          '#000000',
-          '#FC6D26'
+          '#000000', // GitHub black.
+          '#FC6D26' // GitLab orange.
         ]
       }
     });

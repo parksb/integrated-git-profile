@@ -15,11 +15,11 @@ class Content extends React.Component {
     let user = {};
     let userRepository = [];
 
-    // Get GitHub repo
+    // Get GitHub repositories.
     user = new GithubScraper(GH_ID);
     userRepository = user.getRepository();
 
-    // Get GitLab repo
+    // Get GitLab repositories.
     user = new GitlabScraper(GL_ID);
     userRepository = userRepository.concat(user.getRepository());
 

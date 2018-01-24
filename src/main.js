@@ -20,7 +20,7 @@ const GRAPH = new ActivityGraph();
 
 let user = {};
 
-// Set the document title
+// Set the document title.
 if (MAIN_GIT === 'gh') {
   user = new GithubScraper(GH_ID);
   CM.setDocTitle(user.getProfile().name);
@@ -34,4 +34,5 @@ ReactDOM.render(
   ROOT_ELEMENT
 );
 
+// Render the activity graph.
 GRAPH.drawGraph();

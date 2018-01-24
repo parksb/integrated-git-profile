@@ -2,6 +2,7 @@ import $ from 'jquery';
 import moment from 'moment';
 
 class Common {
+  // Parse JSON data form the url.
   getJsonData(url) {
     const DATA = JSON.parse($.ajax({
       url: url,
@@ -12,21 +13,24 @@ class Common {
     return DATA;
   }
 
+  // Set date array for x-axis of the activity graph.
   setDateArray() {
-    const DATE_RANGE = 60;
-    let date = ['x'];
+    const DATE_RANGE = 60; // 60 days.
+    let date = ['x']; // 'x' means x-axis of the graph. 
     
     for (let i = DATE_RANGE; i >= 0; i -= 1) {
-      date.push(moment().add(-i, 'days').format('YYYY-MM-DD'));
+      date.push(moment().add(-i, 'days').format('YYYY-MM-DD')); // Push the date i days ago from today.
     }
 
     return date;
   }
 
+  // Set document(browser tab) title.
   setDocTitle(title) {
     document.title = `${title}'s Git profile`;
   }
 
+  // Sort array by order option.
   sortByOrder(array, order) {
     if (order === 'desc') { // Order by descending
       array.sort((a, b) => {
@@ -55,6 +59,7 @@ class Common {
     return array;
   }
 
+  // Sort object array by order option.
   sortObjectByOrder(array, value, order) {
     if (order === 'desc') { // Order by descending
       array.sort((a, b) => {

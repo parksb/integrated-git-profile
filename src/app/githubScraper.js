@@ -8,23 +8,21 @@ class GithubScraper {
     this._cm = new Common();
   }
 
+  // Get user profile.
   getProfile() {
     const URL = `https://api.github.com/users/${this._id}`;
     const DATA = this._cm.getJsonData(URL);
 
     let userProfile = {
-      name: '',
-      avatar: '',
-      bio: ''
+      name: DATA.name,
+      avatar: DATA.avatar_url,
+      bio: DATA.bio
     };
-
-    userProfile.name = DATA.name;
-    userProfile.avatar = DATA.avatar_url;
-    userProfile.bio = DATA.bio;
 
     return userProfile;
   }
 
+  // Get user repositories.
   getRepository() {
     const URL = `https://api.github.com/users/${this._id}/repos`;
     const DATA = this._cm.getJsonData(URL);
@@ -44,6 +42,7 @@ class GithubScraper {
     return userRepository;
   }
 
+  // Get user activities.
   getActivity() {
     const URL = `https://api.github.com/users/${this._id}/events`;
     const DATE_ARR = this._cm.setDateArray();
@@ -57,16 +56,17 @@ class GithubScraper {
     for (let i = 0; i < data.length; i += 1) {
       let date = moment(data[i].created_at).format('YYYY-MM-DD');
       
-      if (date >= DATE_ARR[1]) {
+      if (date >= DATE_ARR[1]) { // date should be greater than oldest date.
         userActDate.push(date);
       }
     }
 
+    // Find the user activities.
     for (let i = 1, j = 0; i < DATE_ARR.length; i += 1) {
       let actNum = 0;
 
-      if (userActDate[j] === DATE_ARR[i]) {
-        for (let k = j; k < userActDate.length; k += 1) {
+      if (userActDate[j] === DATE_ARR[i]) { // Catch a activity.
+        for (let k = j; k < userActDate.length; k += 1) { // Find other activities at the same day.
           if (userActDate[j] === userActDate[k]) {
             actNum += 1;
           } else {

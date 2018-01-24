@@ -1,8 +1,8 @@
 # Integrated Git Profile
-Integrated Git Profile is a web project for make it possible the developers who use both GitHub and GitLab to view the GitHub and GitLab profile on one page.
+Integrated Git Profile is a web project for the developers who use both GitHub and GitLab. It shows the profiles of GitHub and GitLab on a page.
 
 ## Live at: [Here](https://parksb.github.io/integrated-git-profile/)
-![preview](https://i.imgur.com/0sBFBzV.png)
+![preview](https://i.imgur.com/ZQv1zx4.png)
 
 ## Developement
 **1. Clone the repository**

@@ -13,11 +13,11 @@ class Header extends React.Component {
     let user = {};
     let userProfile = {};
 
-    // Get GitHub profile
+    // Get GitHub profile.
     if (MAIN_GIT === 'gh') {
       user = new GithubScraper(GH_ID);
       userProfile = user.getProfile();
-    } else {
+    } else { // Get GitLab profile.
       user = new GitlabScraper(GH_ID);
       userProfile = user.getProfile();
     }
