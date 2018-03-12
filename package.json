@@ -21,28 +21,28 @@
   "homepage": "https://github.com/ParkSB/integrated-git-profile#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
-    "copy-webpack-plugin": "^4.3.1",
-    "eslint": "^4.15.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "hard-source-webpack-plugin": "^0.5.15",
+    "hard-source-webpack-plugin": "^0.5.18",
     "json-loader": "^0.5.7",
-    "uglifyjs-webpack-plugin": "^1.1.6",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.1"
+    "uglifyjs-webpack-plugin": "^1.2.3",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "billboard.js": "^1.2.0",
-    "jquery": "^3.2.1",
-    "moment": "^2.20.1",
+    "jquery": "^3.3.1",
+    "moment": "^2.21.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "urijs": "^1.19.0"
+    "urijs": "^1.19.1"
   }
 }
