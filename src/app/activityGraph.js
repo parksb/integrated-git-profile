@@ -46,6 +46,9 @@ class ActivityGraph {
           '#000000', // GitHub black.
           '#FC6D26' // GitLab orange.
         ]
+      },
+      onafterinit: function () {
+        this.svg.selectAll('.bb-line').style('stroke-width', '2px');
       }
     });
   }
