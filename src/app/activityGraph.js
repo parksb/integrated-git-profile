@@ -28,7 +28,8 @@ class ActivityGraph {
           CM.setDateArray(), // Last 60 days date.
           GH_ACT_DATE, // GitHub activities.
           GL_ACT_DATE // GitLab activities.
-        ]
+        ],
+        type: 'bar'
       },
       axis: {
         x: {
@@ -46,9 +47,6 @@ class ActivityGraph {
           '#000000', // GitHub black.
           '#FC6D26' // GitLab orange.
         ]
-      },
-      onafterinit: function () {
-        this.svg.selectAll('.bb-line').style('stroke-width', '2px');
       }
     });
   }
