@@ -1,6 +1,6 @@
 # Integrated Git Profile
 [![GitHub release](https://img.shields.io/github/release/ParkSB/integrated-git-profile.svg)](https://github.com/ParkSB/integrated-git-profile/releases)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.md)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.md) [![Greenkeeper badge](https://badges.greenkeeper.io/ParkSB/integrated-git-profile.svg)](https://greenkeeper.io/)
 
 Integrated Git Profile is a web project for the developers who use both GitHub and GitLab. It shows the profiles of GitHub and GitLab on a page.
 
