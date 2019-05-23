@@ -34,7 +34,7 @@
     "json-loader": "^0.5.7",
     "uglifyjs-webpack-plugin": "^1.2.3",
     "webpack": "^4.16.1",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
